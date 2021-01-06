@@ -6,3 +6,4 @@ services:
 before_script:
   - cp -f knexfile.js.travis knexfile.js
   - psql -c 'create database address_book_test;' -U postgres
+  - npm run knex migrate:latest --env test
