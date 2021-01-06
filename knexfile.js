@@ -1,5 +1,7 @@
 'use strict';
 
+const { parse } = require('pg-connection-string');
+
 module.exports = {
     development: {
         client: 'pg',
@@ -46,9 +48,9 @@ module.exports = {
     },
     production: {
         client: 'pg',
-        connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
+        connection: {
+            ssl: true,
+            ...parse(process.env.DATABASE_URL)
         },
         migrations: {
             tableName: 'knex_migrations'
