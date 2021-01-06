@@ -2,7 +2,7 @@
 
 module.exports = {
     development: {
-        client: 'postgresql',
+        client: 'pg',
         connection: {
             database: 'address_book_development',
             user:     'address_book_development'
@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     test: {
-        client: 'postgresql',
+        client: 'pg',
         connection: {
             database: 'address_book_test',
             user:     'address_book_test'
@@ -30,7 +30,7 @@ module.exports = {
         }
     },
     staging: {
-        client: 'postgresql',
+        client: 'pg',
         connection: {
             database: 'address_book_staging',
             user:     'address_book_staging',
@@ -45,16 +45,8 @@ module.exports = {
         }
     },
     production: {
-        client: 'postgresql',
-        connection: {
-            database: 'address_book',
-            user:     'address_book',
-            password: ''
-        },
-        pool: {
-            min: 2,
-            max: 10
-        },
+        client: 'pg',
+        connection: process.env.DATABASE_URL,
         migrations: {
             tableName: 'knex_migrations'
         }
