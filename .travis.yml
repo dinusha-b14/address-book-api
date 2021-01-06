@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - lts/fermium
+services:
+  - postgresql
+before_script:
+  - cp -f knexfile.js.travis knexfile.js
+  - psql -c 'create database address_book_test;' -U postgres
